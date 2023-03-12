@@ -10,9 +10,9 @@ import openai
 
 load_dotenv()
 
-slack_bot_token = os.getenv('SLACK_BOT_TOKEN')
-slack_app_token = os.getenv('SLACK_APP_TOKEN')
-openai.api_key = os.getenv('OPENAI_API_KEY')
+slack_bot_token = os.environ.get("SLACK_BOT_TOKEN") if os.getenv('SLACK_BOT_TOKEN') is None else os.getenv('SLACK_BOT_TOKEN')
+slack_app_token = os.environ.get("SLACK_APP_TOKEN") if os.getenv('SLACK_APP_TOKEN') is None else os.getenv('SLACK_APP_TOKEN')
+openai.api_key = os.environ.get("OPENAI_API_KEY") if os.getenv('OPENAI_API_KEY') is None else os.getenv('OPENAI_API_KEY')
 
 app = App(token=slack_bot_token)
 
